@@ -8,7 +8,6 @@ const View: FunctionComponent<ViewOptions> = (props: ViewOptions) => {
   const map = useContext(MapContext)
 
   useEffect(() => {
-    console.log(map)
     // map not initialized
     if (!map) return;
     

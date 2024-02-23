@@ -1,14 +1,12 @@
-import { ReactElement, createContext, useEffect, useRef, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 import olMap, { MapOptions } from "ol/Map";
-
-import View from "./View";
 
 import "ol/ol.css";
 import "./Map.css";
 
 type MapProps = Omit<MapOptions, "target"> & {
-  children: ReactElement<typeof View>;
+  children: ReactNode,
 };
 
 export const MapContext = createContext<olMap | null>(null);

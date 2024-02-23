@@ -1,9 +1,9 @@
-import { ReactElement } from "react"
+import { ReactNode } from "react";
 
 type LayerProps = {
-  children: ReactElement<ty
+  children: ReactNode | ReactNode[], 
 }
 
-export default function Layers(props: LayersProps) {
-  
+export default function Layers({ children }: LayerProps) {
+  return <>{children}</>;
 }

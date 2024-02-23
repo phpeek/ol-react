@@ -1,26 +1,29 @@
-import { Options } from "ol/layer/BaseTile";
 import olTileLayer from "ol/layer/Tile";
-import { useContext, useEffect, useRef } from "react";
+import Layer from "ol/layer/Layer";
+import { createContext, useContext, useEffect, useState } from "react";
 import { MapContext } from "react-ol/Map";
 
-type TileLayerProps = Options<olTileLayer>;
+export const TileLayerContext = createContext<Layer | null>(null);
 
-const TileSource: FunctionComponent<TileLayerProps>(props: TileLayerProps) => {
-  const ref = useRef<olTileLayer | null>(null);
+export default function TileLayer(props) {
   const map = useContext(MapContext);
-
+  const [layer, setLayer] = useState<Layer | null>(null);
+  
   useEffect(() => {
     if (!map) return;
 
-    const layer = new olTileLayer(props);
+    const layer = new olTileLayer(props.options);
 
-    layer.setMap(map);
+    map.addLayer(layer);
 
-    ref.current = layer
+    setLayer(layer);
+
     return () => {
-      layer.dispose(); 
-    }
-  })
+      layer.dispose();
+    };
+  }, [setLayer, map, props.options]);
 
-  return null;
+  return (
+    <TileLayerContext.Provider value={layer}>{props.children}</TileLayerContext.Provider>
+  );
 }

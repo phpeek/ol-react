@@ -1,18 +1,13 @@
-import TileLayer from "ol/layer/Tile";
-import { OSM } from "ol/source";
 import Map from "react-ol/Map";
 import View from "react-ol/View";
+import Layers from "react-ol/layers";
+import TileLayer from "react-ol/layers/TileLayer";
+import { OSM } from "react-ol/sources";
 
 export default function App() {
   return (
     <div>
-      <Map
-        layers={[
-          new TileLayer({
-            source: new OSM(),
-          }),
-        ]}
-      >
+      <Map>
         <Layers>
           <TileLayer>
             <OSM />
