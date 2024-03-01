@@ -7,12 +7,12 @@ import "./Map.css";
 
 type MapProps = Omit<MapOptions, "target"> & {
   children: ReactNode,
+  onReady?: (map: olMap) => void,
 };
 
 export const MapContext = createContext<olMap | null>(null);
 
-export default function Map(props: MapProps) {
-  const [map, setMap] = useState<olMap | null>(null);
+export default function Map(props: MapProps) { const [map, setMap] = useState<olMap | null>(null);
 
   useEffect(() => {
     const map = new olMap(props);
@@ -20,6 +20,10 @@ export default function Map(props: MapProps) {
     map.setTarget("map");
 
     setMap(map);
+
+    if(props.onReady) {
+      props.onReady(map);
+    } 
 
     return () => {
       map.dispose();
