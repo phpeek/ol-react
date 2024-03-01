@@ -1,7 +1,9 @@
 import { useContext, useEffect } from "react";
-import OSMSource from "ol/source/OSM";
+
 // openlayers
+import OSMSource from "ol/source/OSM";
 import type { Options as OSMOptions } from 'ol/source/OSM'
+
 // react-ol
 import { TileLayerContext } from "react-ol/layers/TileLayer";
 
