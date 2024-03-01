@@ -1,3 +1,7 @@
+// TileLayer
+export * from './TileLayer';
+export { default as TileLayer } from './TileLayer';
+
 import { ReactNode } from "react";
 
 type LayerProps = {
