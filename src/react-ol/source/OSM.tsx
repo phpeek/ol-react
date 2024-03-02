@@ -5,7 +5,7 @@ import OSMSource from "ol/source/OSM";
 import type { Options as OSMOptions } from 'ol/source/OSM'
 
 // react-ol
-import { TileLayerContext } from "react-ol/layers/TileLayer";
+import { TileLayerContext } from "react-ol/layer/TileLayer";
 
 type OSMProps = OSMOptions; 
 
