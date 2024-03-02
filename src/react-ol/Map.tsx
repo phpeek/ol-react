@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { Children, ReactNode, createContext, useEffect, useState } from "react";
 
 import olMap, { MapOptions } from "ol/Map";
 
@@ -13,7 +13,6 @@ type MapProps = Omit<MapOptions, "target"> & {
 export const MapContext = createContext<olMap | null>(null);
 
 export default function Map(props: MapProps) { const [map, setMap] = useState<olMap | null>(null);
-
   useEffect(() => {
     const map = new olMap(props);
 
