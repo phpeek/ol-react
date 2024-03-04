@@ -1,19 +1,24 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import type { ReactNode } from "react";
 
 // openlayers
+import type { Options as BaseTileLayerOptions } from "ol/layer/BaseTile";
+import type TileSource from "ol/source/Tile";
+import type olLayer from "ol/layer/Layer";
 import olTileLayer from "ol/layer/Tile";
-import olLayer from "ol/layer/Layer";
 
 // react-ol
-import { MapContext } from "react-ol/Map";
+import { useMap } from "react-ol/map/hooks";
 
 export const TileLayerContext = createContext<olLayer | null>(null);
 
-type TileLayerProps = ConstructorParameters<typeof olTileLayer>[0];
+type TileLayerProps = BaseTileLayerOptions<TileSource> & {
+  children: ReactNode;
+};
 
-export default function TileLayer(props?: TileLayerProps) {
-  const map = useContext(MapContext);
-  const [layer, setLayer] = useState<olTileLayer | null>(null);
+export default function TileLayer(props: TileLayerProps) {
+  const map = useMap();
+  const [layer, setLayer] = useState<olTileLayer<TileSource> | null>(null);
   
   useEffect(() => {
     if (!map) return;

@@ -1,11 +1,11 @@
 import olRotate, { Options as olRotateOptions } from 'ol/control/Rotate';
-import { useContext, useEffect } from 'react';
-import { MapContext } from 'react-ol/Map';
+import { useEffect } from 'react';
+import { useMap } from 'react-ol/map/hooks';
 
 type RotateProps = olRotateOptions;
 
 export default function Rotate(props: RotateProps) {
-  const map = useContext(MapContext);
+  const map = useMap();  
   
   useEffect(() => {
     if (!map) return;

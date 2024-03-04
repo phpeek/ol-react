@@ -1,8 +1,6 @@
-// TileLayer
-export * from './TileLayer';
-export { default as TileLayer } from './TileLayer';
+import type { ReactNode } from "react";
 
-import { ReactNode } from "react";
+export { default as TileLayer } from './TileLayer';
 
 type LayerProps = {
   children: ReactNode | ReactNode[], 

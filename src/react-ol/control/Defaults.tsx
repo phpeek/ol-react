@@ -1,11 +1,11 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { defaults, DefaultsOptions } from "ol/control/defaults";
-import { MapContext } from "react-ol/Map";
+import { useMap } from "react-ol/map/hooks";
 
 type DefaultsProps = DefaultsOptions;
 
 export default function Defaults(props: DefaultsProps) {
-  const map = useContext(MapContext);
+  const map = useMap();
 
   useEffect(() => {
     if (!map) return;

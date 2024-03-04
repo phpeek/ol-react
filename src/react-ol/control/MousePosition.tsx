@@ -1,12 +1,12 @@
 import olMousePosition, { Options as olMousePositionOptions } from 'ol/control/MousePosition';
-import { useContext, useEffect } from 'react';
-import { MapContext } from 'react-ol/Map';
+import { useEffect } from 'react';
+import { useMap } from 'react-ol/map/hooks';
 
 type MousePositionProps = olMousePositionOptions;
 
 export default function MousePosition(props: MousePositionProps) {
-  const map = useContext(MapContext);
-
+  const map = useMap();
+  
   useEffect(() => {
     if (!map) {
       return;

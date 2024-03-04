@@ -1,13 +1,13 @@
 import olZoomSlider, {
   Options as olZoomSliderOptions,
 } from "ol/control/ZoomSlider";
-import { useContext, useEffect } from "react";
-import { MapContext } from "react-ol/Map";
+import { useEffect } from "react";
+import { useMap } from "react-ol/map/hooks";
 
 type ZoomSliderProps = olZoomSliderOptions;
 
 export default function ZoomSlider(props: ZoomSliderProps) {
-  const map = useContext(MapContext);
+  const map = useMap();
 
   useEffect(() => {
     if (!map) return;

@@ -1,11 +1,13 @@
-import { FunctionComponent, useContext, useEffect, useRef } from "react";
-import olView, { ViewOptions } from "ol/View";
+import { useEffect, useRef } from "react";
+import olView, { ViewOptions as olViewOptions } from "ol/View";
 
-import { MapContext } from "./Map";
+import { useMap } from "./map/hooks";
 
-const View: FunctionComponent<ViewOptions> = (props: ViewOptions) => {
+type ViewProps = olViewOptions;
+
+const View = (props: ViewProps) => {
   const ref = useRef<olView | null>(null);
-  const map = useContext(MapContext)
+  const map = useMap();
 
   useEffect(() => {
     // map not initialized

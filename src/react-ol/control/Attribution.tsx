@@ -1,13 +1,13 @@
 import olAttribution, {
   Options as olAttributionOptions,
 } from "ol/control/Attribution";
-import { useContext, useEffect } from "react";
-import { MapContext } from "react-ol/Map";
+import {  useEffect } from "react";
+import { useMap } from "react-ol/map/hooks";
 
 type AttributionProps = olAttributionOptions;
 
 export default function Attribution(props: AttributionProps) {
-  const map = useContext(MapContext);
+  const map = useMap(); 
 
   useEffect(() => {
     if (!map) return;

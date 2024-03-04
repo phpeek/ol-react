@@ -1,14 +1,14 @@
 import olFullScreen, {
   Options as olFullScreenOptions,
 } from "ol/control/FullScreen";
-import { useContext, useEffect } from "react";
-import { MapContext } from "react-ol/Map";
+import { useEffect } from "react";
+import { useMap } from "react-ol/map/hooks";
 
 type FullScreenProps = olFullScreenOptions;
 
 export default function FullScreen(props: FullScreenProps) {
-  const map = useContext(MapContext);
-
+  const map = useMap(); 
+  
   useEffect(() => {
     if (!map) return;
 

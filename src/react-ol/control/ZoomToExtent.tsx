@@ -1,13 +1,13 @@
 import olZoomToExtent, {
   Options as olZoomToExtentOptions,
 } from "ol/control/ZoomToExtent";
-import { useContext, useEffect } from "react";
-import { MapContext } from "react-ol/Map";
+import { useEffect } from "react";
+import { useMap } from "react-ol/map/hooks";
 
 type ZoomToExtentProps = olZoomToExtentOptions;
 
 export default function ZoomToExtent(props: ZoomToExtentProps) {
-  const map = useContext(MapContext);
+  const map = useMap();
 
   useEffect(() => {
     if (!map) return;

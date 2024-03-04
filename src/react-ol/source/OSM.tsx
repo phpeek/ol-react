@@ -9,7 +9,7 @@ import { TileLayerContext } from "react-ol/layer/TileLayer";
 
 type OSMProps = OSMOptions; 
 
-export default function OSM(props?: OSMProps): void {
+export default function OSM(props?: OSMProps) {
   const layer = useContext(TileLayerContext);
 
   useEffect(() => {
@@ -23,5 +23,5 @@ export default function OSM(props?: OSMProps): void {
     };
   }, [props, layer]);
 
-  return;
+  return null;
 }
